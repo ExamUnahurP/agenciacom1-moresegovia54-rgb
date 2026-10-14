@@ -24,6 +24,9 @@ class ViajesNacionales inherits Packs {
     const actividades = []
 
     method provinciaDestino() = provinciaDestino
+    override method esPremium(){
+        return dias > 10 && coordinador.esAltamenteCalificado()
+    }
 
 
 }
@@ -36,8 +39,16 @@ class ViajesInternacionales inherits Packs{
     method paisDestino() = paisDestino
     method cantEscalas() = escalas
     method esLugarDeInteres() = lugarDeInteres
-    method noEsLugarDeInteres(){
-        lugarDeInteres = false
+    override method esPremium(){
+        return esLugarDeInteres && dias > 20 && cantEscalas() == 0
+    }
+}
+
+class packProvincial inherits ViajesNacionales{
+    const cantDeCiudadesAVisitar
+
+    override method esPremium(){
+        return actividades.size
     }
 }
 
@@ -78,7 +89,7 @@ class Coordinador{
 
     }
 
-    method esPremium() = fa
+    method esPremium() = false
 }
 
 class BeneficiosEspeciales{
