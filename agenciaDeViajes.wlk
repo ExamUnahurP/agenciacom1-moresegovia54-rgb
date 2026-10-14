@@ -6,14 +6,14 @@ class Packs{
 
     method beneficiosEspecialesVigentes() = beneficiosEspeciales.filter({b => b.estaVigente()}).sum({b => b.costo()})
 
-    method valorFianl(){
+    method valorFinal(){
+        
         method totalConBeneficios() = precioBase + self.beneficiosEspecialesVigentes 
-        
-       ------
-        
+        if (self.PackInternacional()){
+            return totalConBeneficios + (totalConBeneficios * 0.2)
+        }
+        return totalConBeneficios
     }
-
-
 }
 
 class PackNacional inherits Packs {
@@ -47,6 +47,10 @@ class PackProvincial inherits PackNacional{
     override method esPremium(){
         return actividades.size >= 4 && cantDeCiudadesAVisitar > 5 && 
         beneficiosEspeciales.filter({b => b.estaVigente()}).size() >= 3
+    }
+
+    override method valorFinal(){
+
     }
 }
 
