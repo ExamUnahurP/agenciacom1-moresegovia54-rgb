@@ -10,7 +10,7 @@ class Packs{
         var precioTotal
 
         method precioTotal() = precioBase + self.beneficiosEspecialesVigentes
-        if (selfiajesInternacionales){
+        if (iajesInternacionales){
             precioTotal = 
         }
         
@@ -46,6 +46,7 @@ class Coordinador{
     const viajes
     const añosDeExperiencia
     var rol
+    var calificado 
     
     method añosDeExperiencia() = añosDeExperiencia
     method cantViajes() = viajes
@@ -61,6 +62,15 @@ class Coordinador{
         } else {
             self.error("No se puede cambiar de rol")
         }
+    }
+    method esAltamenteCalificado(){
+        if (cantViajes() >= 20){
+          return calificado = true
+        }
+        if (rol == "guia"){
+            return estaMotivado = true
+        }
+
     }
 }
 
