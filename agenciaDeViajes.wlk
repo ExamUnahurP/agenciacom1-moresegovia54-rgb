@@ -6,20 +6,17 @@ class Packs{
 
     method beneficiosEspecialesVigentes() = beneficiosEspeciales.filter({b => b.estaVigente()}).sum({b => b.costo()})
 
-    method valorFinal(){
-        var precioTotal
-
-        method precioTotal() = precioBase + self.beneficiosEspecialesVigentes
-        if (iajesInternacionales){
-            precioTotal = 
-        }
+    method valorFianl(){
+        method totalConBeneficios() = precioBase + self.beneficiosEspecialesVigentes 
+        
+       ------
         
     }
 
 
 }
 
-class ViajesNacionales inherits Packs {
+class PackNacional inherits Packs {
     const provinciaDestino
     const actividades = []
 
@@ -31,7 +28,7 @@ class ViajesNacionales inherits Packs {
 
 }
 
-class ViajesInternacionales inherits Packs{
+class PackInternacional inherits Packs{
     const paisDestino
     const escalas
     const lugarDeInteres = true
@@ -44,11 +41,12 @@ class ViajesInternacionales inherits Packs{
     }
 }
 
-class packProvincial inherits ViajesNacionales{
+class PackProvincial inherits PackNacional{
     const cantDeCiudadesAVisitar
 
     override method esPremium(){
-        return actividades.size
+        return actividades.size >= 4 && cantDeCiudadesAVisitar > 5 && 
+        beneficiosEspeciales.filter({b => b.estaVigente()}).size() >= 3
     }
 }
 
@@ -99,7 +97,4 @@ class BeneficiosEspeciales{
 
     method costo() = costo
     method estaVigente() = estaVigente
-    method noEstaVigente(){
-        estaVigente = false
-    }
 }
