@@ -50,6 +50,11 @@ class PackProvincial inherits PackNacional{
     }
 
     override method valorFinal(){
+        method totalConBeneficios() = super()
+        if(self.esPremium()){
+           return totalConBeneficios + (totalConBeneficios * 0.05)
+        }
+        return totalConBeneficios
 
     }
 }
