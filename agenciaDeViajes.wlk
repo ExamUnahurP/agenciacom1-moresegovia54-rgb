@@ -4,11 +4,19 @@ class Packs{
     const beneficiosEspeciales = []
     const coordinador
 
-    method beneficiosEspecialesVigentes() = beneficiosEspeciales.filter({b => b.estaVigente()})
+    method beneficiosEspecialesVigentes() = beneficiosEspeciales.filter({b => b.estaVigente()}).sum({b => b.costo()})
 
     method valorFinal(){
-        precioBase 
+        var precioTotal
+
+        method precioTotal() = precioBase + self.beneficiosEspecialesVigentes
+        if (selfiajesInternacionales){
+            precioTotal = 
+        }
+        
     }
+
+
 }
 
 class ViajesNacionales inherits Packs {
