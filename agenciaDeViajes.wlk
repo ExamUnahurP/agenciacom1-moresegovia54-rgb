@@ -7,8 +7,7 @@ class Packs{
     method beneficiosEspecialesVigentes() = beneficiosEspeciales.filter({b => b.estaVigente()}).sum({b => b.costo()})
 
     method valorFinal(){
-        
-        method totalConBeneficios() = precioBase + self.beneficiosEspecialesVigentes 
+        const totalConBeneficios = precioBase + self.beneficiosEspecialesVigentes 
         if (self.PackInternacional()){
             return totalConBeneficios + (totalConBeneficios * 0.2)
         }
