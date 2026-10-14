@@ -1,7 +1,7 @@
 class Packs{
     const dias
     const precioBase
-    const beneficiosEspeciales = []
+    const beneficiosEspeciales 
     const coordinador
 
     method beneficiosEspecialesVigentes() = beneficiosEspeciales.filter({b => b.estaVigente()}).sum({b => b.costo()})
@@ -44,11 +44,12 @@ class ViajesInternacionales inherits Packs{
 class Coordinador{
     var estaMotivado = true
     const viajes
-    const añosDeExperiencia
+    const aniosDeExperiencia
     var rol
     var calificado 
     
-    method añosDeExperiencia() = añosDeExperiencia
+    method estaCalificado() = calificado
+    method aniosDeExperiencia() = añosDeExperiencia
     method cantViajes() = viajes
 
     method estaMotivado() = estaMotivado
@@ -65,13 +66,19 @@ class Coordinador{
     }
     method esAltamenteCalificado(){
         if (cantViajes() >= 20){
-          return calificado = true
-        }
-        if (rol == "guia"){
-            return estaMotivado = true
+          return estaCalificado() = true
         }
 
+        if (rol == "guia"){
+            return estaMotivado()
+        } else (rol == "asistente logistico"){
+            return aniosDeExperiencia() >= 3
+        }
+        return true
+
     }
+
+    method esPremium() = fa
 }
 
 class BeneficiosEspeciales{
