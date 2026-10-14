@@ -52,7 +52,7 @@ class packProvincial inherits ViajesNacionales{
     }
 }
 
-class Coordinador{
+object coordinador{
     var estaMotivado = true
     const viajes
     const aniosDeExperiencia
