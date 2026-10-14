@@ -3,11 +3,17 @@ class Packs{
     const precioBase
     const beneficiosEspeciales = []
     const coordinador
+
+    method beneficiosEspecialesVigentes() = beneficiosEspeciales.filter({b => b.estaVigente()})
+
+    method valorFinal(){
+        precioBase 
+    }
 }
 
 class ViajesNacionales inherits Packs {
     const provinciaDestino
-    const actividades = ["string"]
+    const actividades = []
 
     method provinciaDestino() = provinciaDestino
 
@@ -51,10 +57,13 @@ class Coordinador{
 }
 
 class BeneficiosEspeciales{
-    const tipo = ["traslados privados" , "acceso a salas vip" , "seguros adicionales"]
+    const tipo 
     const costo
-    const estaVigente = trur
+    const estaVigente = true
 
     method costo() = costo
-    method esta
+    method estaVigente() = estaVigente
+    method noEstaVigente(){
+        estaVigente = false
+    }
 }
