@@ -6,12 +6,25 @@ class Packs{
 }
 
 class ViajesNacionales inherits Packs {
+    const provinciaDestino
+    const actividades = ["string"]
+
+    method provinciaDestino() = provinciaDestino
+
 
 }
 
 class ViajesInternacionales inherits Packs{
+    const paisDestino
+    const escalas
+    const lugarDeInteres = true
 
-    method 
+    method paisDestino() = paisDestino
+    method cantEscalas() = escalas
+    method esLugarDeInteres() = lugarDeInteres
+    method noEsLugarDeInteres(){
+        lugarDeInteres = false
+    }
 }
 
 class Coordinador{
@@ -29,8 +42,19 @@ class Coordinador{
     }
 
     method cambiarRol(nuevoRol){
-        if (nuevoRol == "guia" && )
-
-        rol = nuevoRol
+        if (nuevoRol == "guia" or nuevoRol == "asistente logistico" or nuevoRol == "acompañante"){
+            rol = nuevoRol
+        } else {
+            self.error("No se puede cambiar de rol")
+        }
     }
+}
+
+class BeneficiosEspeciales{
+    const tipo = ["traslados privados" , "acceso a salas vip" , "seguros adicionales"]
+    const costo
+    const estaVigente = trur
+
+    method costo() = costo
+    method esta
 }
